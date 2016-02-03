@@ -5,8 +5,8 @@
     "Google Inc."
   ],
   "dependencies": {
-    "video.js": "~5.3",
-    "videojs-contrib-ads": "~3.1.2"
+    "video.js": "~4.12.15",
+    "videojs-contrib-ads": "~2.2.2"
   },
   "repository": {
     "type": "git",
