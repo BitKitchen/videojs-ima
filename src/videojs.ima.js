@@ -1025,6 +1025,17 @@
             var seekCheckInterval = 1000;
 
             /**
+             * Handle to interval that repeatedly checks for player resize.
+             */
+            var resizeCheckIntervalHandle;
+
+            /**
+             * Interval (ms) to check for player resize for fluid support.
+             */
+            var resizeCheckInterval = 250;
+
+
+            /**
              * Threshold by which to judge user seeking. We check every 1000 ms to see
              * if the user is seeking. In order for us to decide that they are *not*
              * seeking, the content video playhead must only change by 900-1100 ms
