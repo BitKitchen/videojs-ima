@@ -784,15 +784,17 @@
                 }
             };
 
-            /**
+           /**
              * Set up intervals to check for seeking and update current video time.
              * @private
              */
             player.ima.setUpPlayerIntervals_ = function() {
-                updateTimeIntervalHandle =
-                    setInterval(player.ima.updateCurrentTime, seekCheckInterval);
-                seekCheckIntervalHandle =
-                    setInterval(player.ima.checkForSeeking_, seekCheckInterval);
+              updateTimeIntervalHandle =
+                  setInterval(player.ima.updateCurrentTime_, seekCheckInterval);
+              seekCheckIntervalHandle =
+                  setInterval(player.ima.checkForSeeking_, seekCheckInterval);
+              resizeCheckIntervalHandle =
+                  setInterval(player.ima.checkForResize_, resizeCheckInterval);
             };
 
             /**
@@ -824,6 +826,25 @@
                 }
                 contentPlayheadTracker.previousTime = player.currentTime();
             };
+
+
+            /**
+             * Detects when the player is resized (for fluid support) and resizes the
+             * ads manager to match.
+             *
+             * @private
+             */
+            player.ima.checkForResize_ = function() {
+              var currentWidth = player.ima.getPlayerWidth();
+              var currentHeight = player.ima.getPlayerHeight();
+
+              if (adsManager && (currentWidth != adsManagerDimensions.width ||
+                  currentHeight != adsManagerDimensions.height)) {
+                adsManagerDimensions.width = currentWidth;
+                adsManagerDimensions.height = currentHeight;
+                adsManager.resize(currentWidth, currentHeight, google.ima.ViewMode.NORMAL);
+              }
+            }
 
             /**
              * Changes the flag to show or hide the ad countdown timer.
