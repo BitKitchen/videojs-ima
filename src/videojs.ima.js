@@ -1066,6 +1066,15 @@
             };
 
             /**
+             * Stores the dimensions for the ads manager.
+             */
+            var adsManagerDimensions = {
+              width: 0,
+              height: 0
+            };
+
+
+            /**
              * Content ended listeners passed by the publisher to the plugin. Publishers
              * should allow the plugin to handle content ended to ensure proper support
              * of custom ad playback.
