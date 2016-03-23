@@ -1094,6 +1094,7 @@
                 }
                 clearInterval(updateTimeIntervalHandle);
                 clearInterval(seekCheckIntervalHandle);
+                clearInterval(resizeCheckIntervalHandle);
                 player.one('play', player.ima.setUpPlayerIntervals_);
             };
 
