@@ -158,29 +158,6 @@
             };
 
             /**
-             * Creates the AdsRequest and request ads through the AdsLoader.
-             */
-            player.ima.requestAds = function() {
-                if (!adDisplayContainerInitialized) {
-                    adDisplayContainer.initialize();
-                }
-                var adsRequest = new google.ima.AdsRequest();
-                adsRequest.adTagUrl = settings.adTagUrl;
-                if (settings.forceNonLinearFullSlot) {
-                    adsRequest.forceNonLinearFullSlot = true;
-                }
-
-                adsRequest.linearAdSlotWidth = player.ima.getPlayerWidth();
-                adsRequest.linearAdSlotHeight = player.ima.getPlayerHeight();
-                adsRequest.nonLinearAdSlotWidth =
-                    settings.nonLinearWidth || player.ima.getPlayerWidth();
-                adsRequest.nonLinearAdSlotHeight =
-                    settings.nonLinearHeight || (player.ima.getPlayerHeight() / 3);
-
-                adsLoader.requestAds(adsRequest);
-            };
-
-            /**
              * Listener for the ADS_MANAGER_LOADED event. Creates the AdsManager,
              * sets up event listeners, and triggers the 'adsready' event for
              * videojs-ads-contrib.
