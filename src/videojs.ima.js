@@ -55,15 +55,19 @@
                     vjsControls.el().parentNode.appendChild(
                         document.createElement('div'));
                 adContainerDiv.id = 'ima-ad-container';
-                adContainerDiv.addEventListener(
-                    'mouseover',
-                    player.ima.showAdControls_,
-                    false);
-                adContainerDiv.addEventListener(
-                    'mouseout',
-                    player.ima.hideAdControls_,
-                    false);
                 player.ima.createControls_();
+                if( currentAd && currentAd.isLinear()) {
+                    adContainerDiv.addEventListener(
+                        'mouseover',
+                        player.ima.showAdControls_,
+                        false);
+                    adContainerDiv.addEventListener(
+                        'mouseout',
+                        player.ima.hideAdControls_,
+                        false);
+                } else {
+                    player.ima.hideAdControls_();
+                }
                 adDisplayContainer =
                     new google.ima.AdDisplayContainer(adContainerDiv, contentPlayer);
             };
@@ -439,8 +443,10 @@
              * @private
              */
             player.ima.hideAdControls_ = function() {
+                controlsDiv.style.display = 'none';
                 playPauseDiv.style.display = 'none';
                 muteDiv.style.display = 'none';
+                sliderDiv.style.display = 'none';
                 fullscreenDiv.style.display = 'none';
                 controlsDiv.style.height = '14px';
             };
@@ -450,6 +456,7 @@
              * @private
              */
             player.ima.showAdControls_ = function() {
+                controlsDiv.style.display = 'block';
                 controlsDiv.style.height = '37px';
                 playPauseDiv.style.display = 'block';
                 muteDiv.style.display = 'block';
