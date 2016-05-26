@@ -262,8 +262,8 @@
              *     the AdsManager.
              * @private
              */
-            player.ima.onAdError_ = function(adErrorEvent) {
-                window.console.log('Ad error: ' + adErrorEvent.getError());
+            player.ima.onAdError_ = function(event) {
+                window.console.log('Ad error: ' + event.getError());
                 vjsControls.show();
                 adsManager.destroy();
                 adContainerDiv.style.display = 'none';
@@ -1195,5 +1195,3 @@
 
     videojs.plugin('ima', imaPlugin);
 }(window.videojs));
-
-
